@@ -5,6 +5,12 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Azure App Service specific configuration
+if (process.env.WEBSITE_HOSTNAME) {
+  console.log('🔵 Running on Azure App Service');
+  console.log('🔧 Host:', process.env.WEBSITE_HOSTNAME);
+}
+
 // Middleware
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:4200',
